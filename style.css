@@ -1,0 +1,447 @@
+/* ====== KRĀSAS (no logo) ====== */
+:root{
+  --fons:#f5f5f6;          /* lapas fons */
+  --balts:#ffffff;         /* kartītes */
+  --teksts:#26272b;        /* galvenais teksts */
+  --pelekais:#6b6d72;      /* sekundārais teksts */
+  --robeza:#e3e3e6;        /* robežas */
+  --tumss:#2d2e32;         /* tumšās sadaļas, kājene */
+  --sarkans:#c61f2e;       /* logo sarkanā */
+  --sarkans-tums:#a31825;
+  --dzeltens:#f2e52b;      /* luksofora punkti no logo */
+  --zals:#1f9a3b;
+  --r:14px; --r-mazs:10px;
+  --plats:1140px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{
+  font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--fons);color:var(--teksts);
+  line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sarkans);outline-offset:3px;border-radius:4px}
+.iekš{max-width:var(--plats);margin:0 auto;padding:0 22px}
+section{padding:80px 0}
+h1,h2,h3{line-height:1.2;letter-spacing:-.01em}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:800;margin-bottom:12px}
+/* trīs luksofora punkti zem virsrakstiem — no logo */
+h2::after{
+  content:"";display:block;width:46px;height:10px;margin-top:12px;
+  background:
+    radial-gradient(circle,var(--sarkans) 4px,transparent 4.5px) 0 0/16px 10px no-repeat,
+    radial-gradient(circle,var(--dzeltens) 4px,transparent 4.5px) 16px 0/16px 10px no-repeat,
+    radial-gradient(circle,var(--zals) 4px,transparent 4.5px) 32px 0/16px 10px no-repeat;
+}
+h3{font-size:1.08rem;font-weight:700}
+.ievads{color:var(--pelekais);max-width:62ch}
+.poga{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 22px;border-radius:var(--r-mazs);font:inherit;font-weight:700;font-size:.95rem;
+  text-decoration:none;border:2px solid transparent;cursor:pointer;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.poga-sarkana{background:var(--sarkans);color:#fff}
+.poga-sarkana:hover{background:var(--sarkans-tums)}
+.poga-tuksa{border-color:var(--robeza);background:var(--balts);color:var(--teksts)}
+.poga-tuksa:hover{border-color:var(--teksts)}
+
+/* ====== PAZIŅOJUMA JOSLA ====== */
+.pazinojums{
+  position:relative;display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:7px 48px;background:var(--tumss);color:#d9dadd;font-size:.84rem;text-align:center;
+}
+.pazinojums.paslepts{display:none}
+.pazinojums p{line-height:1.45}
+.pazinojums a{color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
+.pazinojums a:hover{text-decoration:underline}
+.p-punkts{
+  display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dzeltens);
+  margin-right:8px;vertical-align:middle;animation:mirgo 2s ease-in-out infinite;
+}
+@keyframes mirgo{50%{opacity:.35}}
+.p-aizv{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:50%;border:0;cursor:pointer;
+  background:transparent;color:#a3a4a8;font-size:1.2rem;line-height:1;transition:background .2s,color .2s;
+}
+.p-aizv:hover{background:rgba(255,255,255,.1);color:#fff}
+
+/* ====== GALVENE ====== */
+.galvene{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;
+}
+.galvene.ritinats{border-bottom-color:var(--robeza);box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.galvene .iekš{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.02rem;line-height:1.15}
+.logo-zime{width:46px;height:auto;background:none;box-shadow:none;border-radius:0}
+.logo small{display:block;font-weight:500;font-size:.75rem;color:var(--pelekais)}
+.izvelne{display:flex;gap:2px;align-items:center;list-style:none}
+.izvelne a{text-decoration:none;padding:8px 12px;border-radius:8px;font-size:.92rem;font-weight:600;color:#44464b;transition:background .2s,color .2s}
+.izvelne a:hover{background:var(--fons);color:var(--sarkans)}
+.izvelne .poga{padding:9px 18px;margin-left:8px;color:#fff}
+.izvelne .poga:hover{color:#fff;background:var(--sarkans-tums)}
+.burgers{display:none;background:none;border:0;color:var(--teksts);cursor:pointer;width:44px;height:44px}
+.burgers span{display:block;width:22px;height:2px;background:currentColor;margin:5px auto;transition:transform .3s,opacity .3s}
+.burgers[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burgers[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burgers[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ====== HERO ar kustīgu ceļu ====== */
+.hero{
+  position:relative;overflow:hidden;padding:80px 0 90px;color:#fff;
+  min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);display:flex;align-items:center;
+  background:
+    radial-gradient(ellipse 60% 70% at 90% 10%,rgba(198,31,46,.35),transparent 60%),
+    linear-gradient(180deg,#2b2c30 0%,#1f2023 100%);
+}
+.cels{
+  position:absolute;right:-6%;bottom:0;width:48%;height:240%;
+  transform:perspective(900px) rotateX(62deg) rotateZ(-16deg);transform-origin:bottom center;
+  background:linear-gradient(90deg,transparent 0 6%,#35363b 6% 94%,transparent 94%);
+  -webkit-mask-image:linear-gradient(to top,#000 55%,transparent 100%);mask-image:linear-gradient(to top,#000 55%,transparent 100%);
+  opacity:0;animation:celsParadas 1.2s .2s cubic-bezier(.2,.7,.2,1) forwards;pointer-events:none;
+}
+.cels::before,.cels::after{content:"";position:absolute;top:0;bottom:0;width:6px;background:#f3efe6;opacity:.55}
+.cels::before{left:9%}.cels::after{right:9%}
+.cels-vidus{
+  position:absolute;left:50%;top:0;bottom:0;width:10px;margin-left:-5px;
+  background:repeating-linear-gradient(180deg,#f3efe6 0 70px,transparent 70px 130px);
+  animation:brauc .9s linear infinite;
+}
+@keyframes brauc{from{background-position:0 0}to{background-position:0 130px}}
+@keyframes celsParadas{
+  from{opacity:0;transform:perspective(900px) rotateX(62deg) rotateZ(-16deg) translateY(160px)}
+  to{opacity:.9;transform:perspective(900px) rotateX(62deg) rotateZ(-16deg)}
+}
+.hero-rezgis{position:relative;z-index:2;width:100%}
+.hero-teksts{max-width:600px}
+.hero h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:16px;max-width:18ch;animation:logoParadas .8s ease both}
+.hero p{font-size:1.05rem;color:#cfd0d3;max-width:50ch;margin-bottom:26px;animation:logoParadas .8s .15s ease both}
+.hero-pogas{display:flex;flex-wrap:wrap;gap:10px;animation:logoParadas .8s .3s ease both}
+.hero .poga-tuksa{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.hero .poga-tuksa:hover{border-color:#fff}
+.hero-fakti{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;list-style:none;animation:logoParadas .8s .45s ease both}
+.hero-fakti li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 14px;font-size:.88rem;color:#cfd0d3;backdrop-filter:blur(4px)}
+.hero-fakti b{color:#fff}
+@keyframes logoParadas{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ====== PAR MUMS ====== */
+.par-rezgis{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:start}
+.par-teksts p{color:#44464b;margin-bottom:14px;max-width:60ch}
+.citats{
+  margin-top:24px;padding:18px 22px;border-left:4px solid var(--sarkans);
+  background:var(--balts);border-radius:0 var(--r-mazs) var(--r-mazs) 0;font-weight:700;
+}
+.iemesli{display:grid;gap:12px}
+.iemesls{
+  display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;
+  padding:18px;border-radius:var(--r);background:var(--balts);border:1px solid var(--robeza);
+}
+.iemesls .ik{width:44px;height:44px;border-radius:10px;background:#fbe9eb;display:grid;place-items:center;color:var(--sarkans)}
+.iemesls .ik svg{width:22px;height:22px}
+.iemesls p{color:var(--pelekais);font-size:.93rem;margin-top:2px}
+.pieeja{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px;list-style:none}
+.pieeja li{padding:6px 14px;border-radius:8px;background:var(--balts);border:1px solid var(--robeza);font-size:.9rem}
+.pieeja li::before{content:"✓ ";color:var(--zals);font-weight:800}
+
+/* ====== KATEGORIJAS ====== */
+.kat-sekcija{background:var(--balts);border-top:1px solid var(--robeza);border-bottom:1px solid var(--robeza)}
+.cilnes{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 24px}
+.cilne{
+  font:inherit;cursor:pointer;min-width:70px;padding:10px 16px;border-radius:var(--r-mazs);
+  background:var(--fons);color:var(--teksts);border:2px solid transparent;font-weight:800;font-size:1rem;
+  transition:border-color .2s,background .2s;text-align:left;
+}
+.cilne small{display:block;font-weight:500;font-size:.72rem;color:var(--pelekais)}
+.cilne:hover{border-color:var(--robeza)}
+.cilne[aria-selected="true"]{background:var(--sarkans);color:#fff}
+.cilne[aria-selected="true"] small{color:#f7d4d7}
+.panelis{display:none;grid-template-columns:1.2fr 1fr;gap:36px;animation:paradas .35s ease}
+.panelis.aktivs{display:grid}
+@keyframes paradas{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panelis .apraksts p{color:#44464b;margin-bottom:12px;max-width:60ch}
+.panelis .apraksts h3{font-size:1.35rem;margin-bottom:12px}
+.panelis .apraksts h4{font-size:1rem;margin:20px 0 6px}
+.vecums{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.vecums span{background:var(--fons);border-radius:8px;padding:5px 12px;font-size:.88rem}
+.vecums b{color:var(--sarkans)}
+.cenas{
+  background:var(--fons);border-radius:var(--r);padding:22px;align-self:start;position:sticky;top:96px;
+}
+.cenas h4{font-size:1rem;margin-bottom:8px}
+.cena{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid var(--robeza)}
+.cena:first-of-type{border-top:0}
+.cena .nos{font-weight:600;font-size:.95rem}
+.cena .nos small{display:block;font-weight:400;color:var(--pelekais);font-size:.82rem;line-height:1.45;margin-top:2px}
+.cena .summa{font-weight:800;white-space:nowrap}
+.cenas .poga{width:100%;margin-top:14px}
+
+/* ====== INSTRUKTORI ====== */
+.instr-rezgis{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:32px}
+.instr{
+  background:var(--balts);border:1px solid var(--robeza);border-top:4px solid var(--sarkans);
+  border-radius:var(--r);padding:22px;display:flex;flex-direction:column;
+}
+.instr-galva{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.inicials{
+  position:relative;width:54px;height:54px;border-radius:50%;flex:none;overflow:hidden;
+  background:var(--tumss);color:#fff;display:grid;place-items:center;font-weight:800;
+}
+.inicials img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.instr h3{font-size:1.05rem}
+.instr .staz{color:var(--pelekais);font-size:.86rem}
+.kat-zimes{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.kz{font-weight:800;font-size:.78rem;padding:3px 9px;border-radius:6px;background:var(--tumss);color:#fff}
+.instr details{border-top:1px solid var(--robeza);padding-top:10px;margin-bottom:16px}
+.instr summary{cursor:pointer;color:#44464b;font-size:.9rem;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+.instr summary::-webkit-details-marker{display:none}
+.instr summary::after{content:"+";font-weight:800;color:var(--sarkans);transition:transform .25s}
+.instr details[open] summary::after{transform:rotate(45deg)}
+.instr details ul{list-style:none;margin-top:8px;font-size:.87rem;color:var(--pelekais)}
+.instr details li{padding:3px 0}
+.instr details li b{color:var(--teksts);font-weight:600}
+.instr .poga{margin-top:auto}
+.instr-cena{
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:14px 18px;border-radius:var(--r-mazs);background:var(--balts);border:1px solid var(--robeza);font-size:.95rem;
+}
+.instr-cena b{color:var(--sarkans)}
+.instr-cena span:last-child{color:var(--pelekais)!important}
+.pasniedzeji{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.pasn{padding:16px 18px;border-radius:var(--r-mazs);background:var(--balts);border:1px solid var(--robeza)}
+.pasn p{color:var(--pelekais);font-size:.9rem;margin-top:2px}
+.apakš-virsraksts{margin-top:48px;font-size:1.2rem}
+
+/* ====== TRANSPORTLĪDZEKĻI ====== */
+.tl-sekcija{background:var(--balts);border-top:1px solid var(--robeza);border-bottom:1px solid var(--robeza)}
+.filtri{display:flex;flex-wrap:wrap;gap:6px;margin:26px 0 22px}
+.filtrs{
+  font:inherit;cursor:pointer;padding:7px 14px;border-radius:8px;font-size:.88rem;font-weight:600;
+  background:var(--fons);color:#44464b;border:1px solid transparent;transition:all .2s;
+}
+.filtrs:hover{border-color:var(--robeza)}
+.filtrs[aria-pressed="true"]{background:var(--tumss);color:#fff}
+.tl-rezgis{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.tl{background:var(--fons);border-radius:var(--r);overflow:hidden}
+.tl.paslepts{display:none}
+.tl-bilde{position:relative;aspect-ratio:4/3;background:#e9e9ec;display:grid;place-items:center;color:#c3c4c8}
+.tl-bilde svg{width:42%;height:auto}
+.tl-bilde img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tl-kat{position:absolute;top:10px;left:10px;z-index:2}
+.tl-skaits{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,255,255,.9);padding:2px 9px;border-radius:6px;font-size:.78rem;font-weight:700}
+.tl-info{padding:14px 16px 16px}
+.tl-info p{color:var(--pelekais);font-size:.88rem;margin-top:2px}
+
+/* ====== GALERIJA ====== */
+.galerija{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:10px;margin-top:30px}
+.gal{
+  position:relative;border-radius:var(--r-mazs);overflow:hidden;background:#e6e6e9;
+  border:0;padding:0;cursor:zoom-in;display:grid;place-items:center;color:#a9aaae;font:inherit;font-size:.85rem;
+}
+.gal:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gal:hover img{transform:scale(1.04)}
+/* Video slaidrādis — der jebkurai izšķirtspējai */
+.video-slaideris{margin-top:14px}
+.vs-logs{
+  position:relative;height:min(78vh,720px);border-radius:var(--r);overflow:hidden;background:#141416;
+}
+.vs-slaids{
+  position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;
+}
+.vs-slaids.aktivs{opacity:1;visibility:visible}
+.vs-slaids video{width:100%;height:100%;object-fit:contain;background:#141416}
+/* pārklājs ar tekstu — redzams, kad video nav ieslēgts vai ir pauzē */
+.vs-parklajs{
+  position:absolute;inset:0;z-index:2;border:0;cursor:pointer;font:inherit;color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  padding:24px 80px;text-align:center;
+  background:linear-gradient(180deg,rgba(20,20,22,.55),rgba(20,20,22,.72));
+  backdrop-filter:blur(2px);transition:opacity .35s,visibility .35s;
+}
+.vs-slaids.spele .vs-parklajs{opacity:0;visibility:hidden}
+.vs-kat{
+  font-weight:800;font-size:.8rem;padding:4px 12px;border-radius:6px;
+  background:var(--sarkans);letter-spacing:.02em;margin-bottom:6px;
+}
+.vs-virs{font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:800;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.vs-apr{color:#d9dadd;font-size:1rem;max-width:40ch}
+.vs-play{
+  margin-top:18px;width:70px;height:70px;border-radius:50%;
+  background:rgba(255,255,255,.95);position:relative;transition:transform .25s,background .25s;
+}
+.vs-play::after{
+  content:"";position:absolute;left:52%;top:50%;transform:translate(-40%,-50%);
+  border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--sarkans);
+}
+.vs-parklajs:hover .vs-play{transform:scale(1.08)}
+.vs-bulta{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.92);color:var(--teksts);font-size:2rem;line-height:1;
+  display:grid;place-items:center;padding-bottom:4px;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);transition:background .2s,color .2s,opacity .3s;
+}
+/* kamēr video spēlē, bultiņas paslēptas; parādās, kad pele ir virs video */
+.vs-logs.spele .vs-bulta{opacity:0;pointer-events:none}
+@media (hover:hover){
+  .vs-logs.spele:hover .vs-bulta{opacity:1;pointer-events:auto}
+}
+.vs-bulta:hover{background:var(--sarkans);color:#fff}
+.vs-iepr{left:16px}.vs-nak{right:16px}
+.vs-punkti{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.vs-punkti button{
+  width:10px;height:10px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:#c9cacd;transition:background .2s,width .2s;
+}
+.vs-punkti button[aria-current="true"]{background:var(--sarkans);width:26px;border-radius:5px}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,20,22,.9);display:none;place-items:center;padding:24px;cursor:zoom-out}
+.lightbox.atverts{display:grid;animation:paradas .25s}
+.lightbox img{max-height:88vh;border-radius:var(--r-mazs)}
+.lightbox button{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));right:18px;background:var(--sarkans);border:0;color:#fff;width:42px;height:42px;border-radius:50%;font-size:1.3rem;cursor:pointer}
+
+/* ====== PIETEIKŠANĀS ====== */
+.soli{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;counter-reset:solis;list-style:none}
+.solis{padding:22px 20px;border-radius:var(--r);background:var(--fons)}
+.solis::before{
+  counter-increment:solis;content:counter(solis);
+  display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  background:var(--sarkans);color:#fff;font-weight:800;margin-bottom:12px;
+}
+.solis p{color:var(--pelekais);font-size:.92rem;margin-top:4px}
+.tel-saraksts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:20px}
+.tel{
+  display:flex;flex-direction:column;padding:14px 18px;border-radius:var(--r-mazs);
+  text-decoration:none;border:1px solid var(--robeza);transition:border-color .2s;
+}
+.tel:hover{border-color:var(--sarkans)}
+.tel span{color:var(--pelekais);font-size:.84rem}
+.tel b{font-size:1rem}
+
+/* ====== KĀJENE ====== */
+.kajene{background:var(--tumss);color:#e8e8ea;padding:56px 0 26px}
+.kajene .logo small{color:#a3a4a8}
+.kajene .logo-zime{background:#fff;border-radius:8px;padding:4px;width:50px}
+.kaj-rezgis{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
+.kajene h4{font-size:.95rem;margin-bottom:12px;color:#fff}
+.kajene p,.kajene li{color:#a3a4a8;font-size:.9rem}
+.kajene ul{list-style:none}
+.kajene li{padding:3px 0}
+.kajene a{text-decoration:none}
+.kajene a:hover{color:#fff}
+.kaj-apaksa{
+  margin-top:40px;padding-top:20px;border-top:1px solid #45464b;
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.84rem;color:#8a8b90;
+}
+/* Sociālo tīklu ikonas kājenē */
+.soc-ikonas{display:flex;gap:10px;padding-top:10px!important}
+.soc-ikonas a{
+  width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;font-size:1.1rem;
+  background:#3a3b40;color:#fff;
+  transition:background .2s,transform .2s;
+}
+.soc-ikonas a:hover{background:var(--sarkans);color:#fff;transform:translateY(-2px)}
+
+/* ====== TRANSPORTLĪDZEKĻU KARTĪTES — klikšķināmas ====== */
+.tl[data-foto]{cursor:pointer;transition:transform .2s,box-shadow .2s}
+.tl[data-foto]:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.tl[data-foto]:hover h3{color:var(--sarkans)}
+.tl-skatit{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:.84rem;font-weight:700;color:var(--sarkans)}
+
+/* ====== FOTO LOGS ====== */
+.foto-logs{
+  position:fixed;inset:0;z-index:120;background:rgba(15,15,17,.82);backdrop-filter:blur(4px);
+  display:grid;place-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));
+  animation:paradas .25s ease;
+}
+.foto-logs[hidden]{display:none}
+.fl-kaste{
+  width:min(1000px,100%);max-height:100%;display:flex;flex-direction:column;
+  background:var(--balts);border-radius:var(--r);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+.fl-galva{flex:none;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:16px 18px}
+.fl-galva h3{font-size:1.2rem;margin-top:6px}
+.fl-galva p{color:var(--pelekais);font-size:.9rem}
+.fl-aizv{
+  flex:none;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--fons);color:var(--teksts);font-size:1.5rem;line-height:1;transition:background .2s,color .2s;
+}
+.fl-aizv:hover{background:var(--sarkans);color:#fff}
+.fl-skats{position:relative;flex:none;background:#141416;height:min(62vh,600px);display:grid;place-items:center;overflow:hidden}
+.fl-skats img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.fl-tukss{color:#a9aaae}
+.fl-bulta{
+  position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.92);color:var(--teksts);font-size:1.9rem;line-height:1;padding-bottom:4px;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);transition:background .2s,color .2s;
+}
+.fl-bulta:hover{background:var(--sarkans);color:#fff}
+.fl-iepr{left:14px}.fl-nak{right:14px}
+.fl-skaits{position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,.6);color:#fff;font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:6px}
+.foto-logs.viena .fl-bulta,.foto-logs.viena .fl-skaits,.foto-logs.viena .fl-sikbildes{display:none}
+.fl-sikbildes{flex:none;display:flex;gap:8px;padding:12px 16px;overflow-x:auto;background:var(--balts)}
+.fl-sikbildes button{flex:none;width:76px;height:56px;border-radius:8px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;opacity:.6;transition:opacity .2s,border-color .2s;background:#e6e6e9}
+.fl-sikbildes button img{width:100%;height:100%;object-fit:cover}
+.fl-sikbildes button:hover{opacity:1}
+.fl-sikbildes button[aria-current="true"]{opacity:1;border-color:var(--sarkans)}
+
+/* ====== GALERIJAS LAPA ====== */
+.gal-lapa{min-height:60vh}
+.gal-tukss{color:var(--pelekais);margin-top:24px}
+.izvelne a[aria-current="page"]{color:var(--sarkans);background:var(--fons)}
+
+@media (max-width:640px){
+  .fl-skats{height:52vh}
+  .fl-bulta{width:40px;height:40px;font-size:1.6rem}
+  .fl-iepr{left:8px}.fl-nak{right:8px}
+}
+
+/* ====== PARĀDĪŠANĀS RITINOT (klusa) ====== */
+.paradit{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.paradit.redzams{opacity:1;transform:none}
+
+/* ====== MOBILAIS ====== */
+@media (max-width:980px){
+  .par-rezgis,.panelis.aktivs{grid-template-columns:1fr}
+  .cenas{position:static}
+  .kaj-rezgis{grid-template-columns:1fr 1fr}
+  .soli{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .burgers{display:block}
+  .izvelne{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:2px;padding:10px 18px 20px;
+    background:#fff;border-bottom:1px solid var(--robeza);box-shadow:0 10px 20px rgba(0,0,0,.06);
+    transform:translateY(-8px);opacity:0;pointer-events:none;transition:all .2s;
+  }
+  .izvelne.atverta{transform:none;opacity:1;pointer-events:auto}
+  .izvelne a{padding:11px 12px;font-size:1rem}
+  .izvelne .poga{margin:8px 0 0}
+  .cels{width:100%;right:-45%;opacity:.4}
+}
+@media (max-width:640px){
+  section{padding:60px 0}
+  .hero{padding:56px 0 70px}
+  .galerija{grid-template-columns:1fr 1fr;grid-auto-rows:140px}
+  .vs-logs{height:70vh}
+  .vs-bulta{width:42px;height:42px;font-size:1.7rem}
+  .vs-iepr{left:8px}.vs-nak{right:8px}
+  .vs-parklajs{padding:24px 58px}
+  .vs-play{width:58px;height:58px}
+  .kaj-rezgis{grid-template-columns:1fr}
+  .instr-rezgis{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .paradit{opacity:1;transform:none}
+}
